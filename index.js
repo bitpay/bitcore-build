@@ -32,6 +32,7 @@
 var gulp = require('gulp');
 
 var coveralls = require('gulp-coveralls');
+var fs = require('fs');
 var gutil = require('gulp-util');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
@@ -229,6 +230,10 @@ function startGulp(name, opts) {
   });
 
   var releaseFiles = ['./package.json'];
+  var shrinkwrap = './npm-shrinkwrap.json';
+  if (fs.existsSync(shrinkwrap) {
+    releaseFiles.push(shrinkwrap);
+  }
   if (browser) {
     releaseFiles.push('./bower.json');
   }
